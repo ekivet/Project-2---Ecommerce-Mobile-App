@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.widget.ListView;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,17 +56,17 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(productsList));
 
 
-        /**
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_main);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this,ShoppingCartActivity.class);
+                startActivity(intent);
 
             }
         });
-         */
+
 
         //SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
         //SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
