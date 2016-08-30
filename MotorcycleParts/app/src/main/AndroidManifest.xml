@@ -11,25 +11,25 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+            <!--<action android:name="android.intent.action.SEARCH" />-->
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.default_searchable"
-                android:value=".SearchResultActivity" />
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".SearchResultActivity" />
+    </activity>
+    <activity android:name=".SearchResultActivity">
+        <meta-data
+            android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+        <intent-filter>
+            <action android:name="android.intent.action.SEARCH" />
+        </intent-filter>
         </activity>
-        <activity android:name=".SearchResultActivity">
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainDialogActivity" />
-        <activity android:name=".ShoppingCartActivity"></activity>
+        <activity android:name=".ShoppingCartActivity"
+            android:label="@string/title_activity_shopping_cart"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

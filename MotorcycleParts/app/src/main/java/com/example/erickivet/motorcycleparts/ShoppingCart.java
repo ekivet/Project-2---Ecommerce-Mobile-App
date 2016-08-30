@@ -1,4 +1,5 @@
 package com.example.erickivet.motorcycleparts;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +9,37 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    private List <Products> mShoppingCart;
+    ArrayList<Products>cartList;
 
-    public ShoppingCart(){
-        mShoppingCart = new ArrayList<>();
+    private static ShoppingCart thisInstance = new ShoppingCart();
+
+    public static ShoppingCart getInstance(){
+        if (thisInstance == null){
+            thisInstance = new ShoppingCart();
+        }
+        return thisInstance;
     }
 
-    public List<Products> getShoppingCart(){
-        return mShoppingCart;
+    private ShoppingCart(){
+        this.cartList = new ArrayList<>();
     }
 
+    public ArrayList<Products> getCartList() {
+        return cartList;
+    }
+
+
+    public void addProduct(Products item){
+        cartList.add(item);
+    }
+
+
+    public void removeItem(Products item){
+        cartList.remove(item);
+    }
+
+
+    public void clearCart(){
+        cartList.clear();
+    }
 }

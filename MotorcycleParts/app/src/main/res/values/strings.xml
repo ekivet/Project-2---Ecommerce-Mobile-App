@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Motorcycle Parts</string>
+    <string name="title_activity_shopping_cart">Shopping Cart</string>
 </resources>

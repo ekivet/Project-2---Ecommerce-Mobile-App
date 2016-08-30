@@ -63,31 +63,9 @@ public class ShoppingHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        /**
-        Products product1 = new Products("Yoshimura Exhaust",R.drawable.yoshimura_r77,"Loud Exhaust",400);
-        Products product2 = new Products("AGV Pista",R.drawable.agv_pista,"Good Helmet",1399);
-        Products product3 = new Products("Akrapovic Slip On Exhaust",R.drawable.akrapovic_slip_on,"Loud AF Exhaust",800);
-        Products product4 = new Products("Alpine Stars Jacket",R.drawable.alpinestars_jacket,"Nice Jacket",300);
-        Products product5 = new Products("K&N Air Filter",R.drawable.kn_air_filter,"Some Air Filter",49);
-        Products product6 = new Products("Michelin Pilot Tires",R.drawable.michelin_pilot,"Some Tires",189);
-        Products product7 = new Products("Tank Pads",R.drawable.stompgrip_tank_pad,"Tank Pads",100);
-        Products product8 = new Products("Shoei GT Air",R.drawable.shoei_gt_air,"Shoei GT Air Helmet",500);
-
-        insertRow(product1);
-        insertRow(product2);
-        insertRow(product3);
-        insertRow(product4);
-        insertRow(product5);
-        insertRow(product6);
-        insertRow(product7);
-        insertRow(product8);
-         */
 
         sqLiteDatabase.execSQL(CREATE_SHOPPING_LIST_TABLE);
         sqLiteDatabase.execSQL(CREATE_SHOPPING_CART_TABLE);
-
-
-
 
     }
 
@@ -112,6 +90,7 @@ public class ShoppingHelper extends SQLiteOpenHelper{
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COL_ITEM_NAME, product.getItemName());
+        //values.put(COL_ITEM_QUANTITY,product.getItemQuantity);
         values.put(COL_ITEM_PRICE, product.getItemPrice());
 
         sqLiteDatabase.insertOrThrow(SHOPPING_CART_TABLE_NAME,null,values);
@@ -152,6 +131,21 @@ public class ShoppingHelper extends SQLiteOpenHelper{
 
     }
 
+    public Cursor searchItems (String query){
 
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        Cursor cursor = sqLiteDatabase.query(SHOPPING_LIST_TABLE_NAME,
+                SHOPPING_COLUMNS,
+                COL_ITEM_NAME + " LIKE ?",
+                new String[]{query + "%"},
+                null,
+                null,
+                null,
+                null);
+
+        return cursor;
+
+    }
 
 }

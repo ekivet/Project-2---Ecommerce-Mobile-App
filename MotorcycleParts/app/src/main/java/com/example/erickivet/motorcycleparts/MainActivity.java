@@ -23,37 +23,31 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     ShoppingHelper shoppingHelper;
+    /*
+    * Set up recyclerview.  Set view adapter.  Create Instance of Database
+    * Populate the database if it isn't already done.  */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        addData();
+        //addData();
 
         shoppingHelper = shoppingHelper.getInstance(this);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main_activity);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this,
                 LinearLayoutManager.VERTICAL,false));
 
-
-
-
         List <Products> productsList = shoppingHelper.getProductList();
-
-        /**
-            productsList.add(new Products("Yoshimura Exhaust",R.drawable.yoshimura_r77,"Loud Exhaust",400));
-            productsList.add(new Products("AGV Pista",R.drawable.agv_pista,"Good Helmet",1399));
-            productsList.add(new Products("Akrapovic Slip On Exhaust",R.drawable.akrapovic_slip_on,"Loud AF Exhaust",800));
-            productsList.add(new Products("Alpine Stars Jacket",R.drawable.alpinestars_jacket,"Nice Jacket",300));
-            productsList.add(new Products("K&N Air Filter",R.drawable.kn_air_filter,"Some Air Filter",49));
-            productsList.add(new Products("Michelin Pilot Tires",R.drawable.michelin_pilot,"Some Tires",189));
-            productsList.add(new Products("Tank Pads",R.drawable.stompgrip_tank_pad,"Tank Pads",100));
-            productsList.add(new Products("Shoei GT Air",R.drawable.shoei_gt_air,"Shoei GT Air Helmet",500));
-         */
 
 
 
         mRecyclerView.setAdapter(new MainRecyclerViewAdapter(productsList));
+
+        if(productsList.size() == 0){
+            addData();
+        }
 
 
 
@@ -66,13 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
-        //SearchManager searchManager = (SearchManager)getSystemService(Context.SEARCH_SERVICE);
-        //SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-
-
     }
+
+    //Inflate searchbar
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         ShoppingHelper helper = ShoppingHelper.getInstance(MainActivity.this);
         Products product1 = new Products("Yoshimura Exhaust",R.drawable.yoshimura_r77,"Loud Exhaust",400);
         Products product2 = new Products("AGV Pista",R.drawable.agv_pista,"Good Helmet",1399);
-        Products product3 = new Products("Akrapovic Slip On Exhaust",R.drawable.akrapovic_slip_on,"Loud AF Exhaust",800);
+        Products product3 = new Products("Akrapovic Slip On Exhaust",R.drawable.akrapovic_slip_on,"Loud Exhaust",800);
         Products product4 = new Products("Alpine Stars Jacket",R.drawable.alpinestars_jacket,"Nice Jacket",300);
         Products product5 = new Products("K&N Air Filter",R.drawable.kn_air_filter,"Some Air Filter",49);
         Products product6 = new Products("Michelin Pilot Tires",R.drawable.michelin_pilot,"Some Tires",189);

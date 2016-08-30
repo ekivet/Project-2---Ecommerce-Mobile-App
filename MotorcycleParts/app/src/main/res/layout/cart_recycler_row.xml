@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/imageview_cart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_check_black_24dp"/>
+
+    <LinearLayout
+        android:layout_toEndOf="@+id/imageview_cart"
+        android:layout_toRightOf="@+id/imageview_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:text="Item Name"/>
+        <TextView
+            android:id="@+id/textview_price_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:text="$0.00"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/quantity_textview"
+                android:text="Quantity:"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/quant_display"
+                android:text="1"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/quantity_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/update_button"
+            android:text="update "
+            android:layout_below="@id/quantity_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/delete_item"
+                android:text="delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/update_button"
+                android:layout_below="@id/quantity_textview"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
